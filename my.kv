@@ -1,0 +1,70 @@
+Manger:
+    Home:
+    VideoRecgntion:
+    ImageRecgntion:
+
+
+<Home>:
+    name:"Home"
+    GridLayout:
+        cols:1
+        Button:
+            text:"Live detction"
+            on_release:
+                app.root.current="VideoRecgntion"
+        Button:
+            text:"Upload Image"
+            on_release:
+                app.root.current="ImageRecgntion"
+
+
+<VideoRecgntion>:
+    name:"VideoRecgntion"
+    GridLayout:
+        cols:1
+        row:2
+        Image:
+            id:webcam
+            source:""
+        GridLayout:
+            cols:1
+            ToggleButton:
+                id:btn3
+                text:"Start Detction" if btn3.state == "normal" else "Stop Detction"
+                on_release:
+                    root.build()
+
+            Button:
+                text:"Home"
+
+                on_release:
+                    app.root.current="Home"
+
+
+<ImageRecgntion>:
+    name:"ImageRecgntion"
+    orientation:"vertical"
+    GridLayout:
+        cols:1
+        Image:
+            id:img
+            source:""
+
+        Label:
+            id:result
+            text:""
+            font_size: 50
+            halign: 'center'
+            valign: 'middle'
+        GridLayout:
+            cols:1
+            Button:
+                text:"Home"
+                on_release:
+                    app.root.current="Home"
+            Button:
+                text:"Upload Image"
+                on_release:
+                    root.clear_input()
+                    root.build()
+
